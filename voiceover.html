@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#f8f9f6" />
+  <meta name="description" content="쇼핑몰 상세 페이지를 음성으로 안내하는 wesee" />
+  <link rel="icon" href="/icons/wesee.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/src/styles/styles.css" />
+  <link rel="stylesheet" href="/src/styles/voiceover.css" />
+  <title>wesee — 쇼핑 페이지 음성 안내</title>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="site-header">
+      <a class="brand" href="/" aria-label="wesee 내 제품으로 이동"><span class="brand-mark" aria-hidden="true">w</span><span>wesee</span></a>
+      <h1>쇼핑 페이지 음성 안내</h1>
+      <nav class="side-nav" aria-label="주 메뉴"><a class="nav-link" href="/">내 제품</a><a class="nav-link active" href="/voiceover.html" aria-current="page">음성 안내</a></nav>
+    </header>
+    <main class="main-area voice-main">
+      <section class="voice-card" aria-labelledby="voice-title">
+        <p class="eyebrow">접근성 도우미</p>
+        <h2 id="voice-title">쇼핑몰 상세 정보를<br />귀로 확인해 보세요</h2>
+        <p class="intro">상품 페이지 링크를 넣으면 페이지의 이미지를 살펴보고, 가장 세로로 긴 상세 이미지의 내용을 요약해 들려드려요.</p>
+        <form id="crawl-form" class="url-form">
+          <label for="shop-url">쇼핑몰 상품 링크</label>
+          <div class="url-input-row"><input id="shop-url" name="url" type="url" inputmode="url" autocomplete="url" placeholder="https://shopping.example.com/product" required aria-describedby="url-hint" /><button class="button button-primary" id="crawl-button" type="submit">페이지 살펴보기</button></div>
+          <small id="url-hint">공개된 상품 페이지 주소를 입력해 주세요.</small>
+        </form>
+        <p class="status-message" id="status-message" role="status" aria-live="polite"></p>
+        <div class="error-message hidden" id="error-message" role="alert"></div>
+        <section class="summary-panel hidden" id="summary-panel" aria-labelledby="summary-heading">
+          <div class="summary-heading-row"><div><p class="eyebrow">상품 설명 요약</p><h3 id="summary-heading">음성 안내 내용</h3></div><span class="image-size" id="image-size"></span></div>
+          <p class="summary-text" id="summary-text" tabindex="0"></p>
+          <div class="speech-controls"><button class="button button-primary" id="speak-button" type="button">요약 듣기</button><button class="button button-secondary" id="stop-button" type="button" disabled>읽기 멈추기</button></div>
+          <p class="speech-note">음성은 기기의 한국어 음성 설정을 사용합니다.</p>
+          <details class="image-preview"><summary>선택된 상세 이미지 확인</summary><img id="detail-image" alt="가장 세로로 긴 상품 상세 페이지 이미지" /></details>
+        </section>
+      </section>
+      <p class="privacy-note">입력한 링크의 공개 페이지와 상품 이미지가 요약을 위해 서버 및 Gemini API로 전달됩니다.</p>
+    </main>
+  </div>
+  <script src="/config.js"></script>
+  <script type="module" src="/src/voiceover.js"></script>
+</body>
+</html>
