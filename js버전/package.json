@@ -1,0 +1,13 @@
+{
+  "name": "wesee",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "analyze:folder": "node folder-to-terminal.js",
+    "analyze:link": "node link-to-terminal.js"
+  },
+  "dependencies": {
+    "@google/genai": "^2.28.0"
+  }
+}
